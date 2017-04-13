@@ -18,6 +18,11 @@
 
 	docker-compose up -d
 	
+	
+运行监控
+
+	docker exec -it <APP_CONTAINER_ID> bundle exec guard
+	
 访问项目
 
 	http://127.0.0.1:3000

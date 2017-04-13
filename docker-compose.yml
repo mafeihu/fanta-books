@@ -15,6 +15,7 @@ services:
       - gems:/usr/local/bundle
     ports:
       - "3000:3000"
+      - "35729:35729"
     depends_on:
       - db
     env_file:
