@@ -12,7 +12,7 @@
 
 	docker-compose build
 	docker-compose run app bundle install
-	docker-compose run app rails db:create
+	docker-compose run app rails db:setup
 	
 启动服务
 
