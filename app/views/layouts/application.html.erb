@@ -3,12 +3,12 @@
   <head>
     <title>App</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "//cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
+    <%= javascript_include_tag "//cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js" %>
   </body>
 </html>
