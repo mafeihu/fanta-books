@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'slim-rails', '~> 3.1', '>= 3.1.2'
+gem 'typhoeus', '~> 1.1', '>= 1.1.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +52,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-livereload', '~> 2.5', '>= 2.5.2'
   gem 'rack-livereload', '~> 0.3.16'
+  gem 'pry-rails', '~> 0.3.6'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
