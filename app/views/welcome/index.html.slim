@@ -1,0 +1,4 @@
+.ui.link.cards
+  - @books.each do |book|
+    .card
+      .image = image_tag(book.try(:cover))
