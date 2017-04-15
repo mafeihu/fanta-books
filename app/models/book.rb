@@ -16,4 +16,23 @@
 #
 
 class Book < ApplicationRecord
+  validates :isbn, presence: true, length: {is: 13}
+
+  after_create_commit :douban
+
+  private
+    def douban
+      begin
+        response  = Typhoeus.get "https://api.douban.com/v2/book/isbn/#{isbn}"
+        content   = JSON.parse(response.body.force_encoding('utf-8'))
+        update_columns({
+          title: content['title'], external: content['id'],
+          cover: content['images']['large']
+        })
+      rescue Exception => e
+        binding.pry
+        logger.fatal "book: #{isbn} #{e.message}"
+      end
+      
+    end
 end
