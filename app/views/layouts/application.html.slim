@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title Fanta Books
+    = csrf_meta_tags
+    = stylesheet_link_tag "//cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.css"
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .ui.red.center.aligned.segment Read Easy Read More
+    = yield
+    = javascript_include_tag "//cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js"
+
