@@ -3,7 +3,7 @@ MAINTAINER guxiaobai <sikuan.gu@gmail.com>
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk update
-RUN apk add build-base postgresql-dev tzdata nodejs
+RUN apk add build-base postgresql-dev tzdata libcurl nodejs 
 
 RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.org
 
