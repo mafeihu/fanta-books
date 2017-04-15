@@ -30,7 +30,6 @@ class Book < ApplicationRecord
           cover: content['images']['large']
         })
       rescue Exception => e
-        binding.pry
         logger.fatal "book: #{isbn} #{e.message}"
       end
       
