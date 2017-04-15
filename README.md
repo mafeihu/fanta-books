@@ -2,6 +2,10 @@
 
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/fanta-books/Lobby)
 
+### 待开发
+
+* 系列书籍管理
+* 书籍搜索
 
 ### 运行项目
 
