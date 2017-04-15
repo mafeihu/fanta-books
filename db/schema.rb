@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170415104654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "books", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade, comment: "公开发行" do |t|
+    t.string   "title",                   comment: "书名"
+    t.string   "isbn",                    comment: "编号"
+    t.string   "external",                comment: "外部编号"
+    t.string   "cover",                   comment: "封面"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
+  end
 
 end
