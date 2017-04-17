@@ -20,18 +20,21 @@ class Book < ApplicationRecord
 
   after_create_commit :douban
 
+  def publish
+    begin
+      response  = Typhoeus.get "https://api.douban.com/v2/book/isbn/#{isbn}"
+      content   = JSON.parse(response.body.force_encoding('utf-8'))
+      update_columns({
+        title: content['title'], external: content['id'],
+        cover: content['images']['large']
+      })
+    rescue Exception => e
+      logger.fatal "book: #{isbn} #{e.message}"
+    end
+  end
+
   private
     def douban
-      begin
-        response  = Typhoeus.get "https://api.douban.com/v2/book/isbn/#{isbn}"
-        content   = JSON.parse(response.body.force_encoding('utf-8'))
-        update_columns({
-          title: content['title'], external: content['id'],
-          cover: content['images']['large']
-        })
-      rescue Exception => e
-        logger.fatal "book: #{isbn} #{e.message}"
-      end
-      
+      BookJob.perform_later id
     end
 end
