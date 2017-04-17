@@ -54,6 +54,7 @@ group :development do
   gem 'rack-livereload', '~> 0.3.16'
   gem 'pry-rails', '~> 0.3.6'
   gem 'annotate', '~> 2.7', '>= 2.7.1'
+  gem 'foreman', '~> 0.84.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
