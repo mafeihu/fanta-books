@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'slim-rails', '~> 3.1', '>= 3.1.2'
 gem 'typhoeus', '~> 1.1', '>= 1.1.2'
+gem 'sidekiq', '~> 4.2', '>= 4.2.10'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,6 +55,7 @@ group :development do
   gem 'rack-livereload', '~> 0.3.16'
   gem 'pry-rails', '~> 0.3.6'
   gem 'annotate', '~> 2.7', '>= 2.7.1'
+  gem 'foreman', '~> 0.84.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
