@@ -20,6 +20,10 @@ class Book < ApplicationRecord
 
   after_create_commit :douban
 
+  def cover
+    read_attribute(:cover) || 'book_default.png'
+  end
+
   def publish
     begin
       response  = Typhoeus.get "https://api.douban.com/v2/book/isbn/#{isbn}"
