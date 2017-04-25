@@ -1,6 +1,9 @@
 doctype html
 html
   head
+    meta charset='utf-8'
+    meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     title Fanta Books
     = csrf_meta_tags
     = stylesheet_link_tag "//cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.css"
@@ -9,4 +12,11 @@ html
     .ui.red.center.aligned.segment Read Easy Read More
     = yield
     = javascript_include_tag "//cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js"
+    = javascript_include_tag "//cdn.bootcss.com/echo.js/1.7.3/echo.min.js"
+    javascript:
+      $(function(){
+        echo.init({
+          offset: 100
+        });
+      })
 
