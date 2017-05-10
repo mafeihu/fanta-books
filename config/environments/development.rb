@@ -1,5 +1,5 @@
 Rails.application.configure do
-  
+  Slim::Engine.set_options pretty: true, sort_attrs: false
   config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
   # Settings specified here will take precedence over those in config/application.rb.
 
