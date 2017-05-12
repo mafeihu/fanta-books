@@ -1,8 +1,10 @@
 $(function(){
   var isbn;
+  var book_id;
 
   $('#container .upload').click(function(){
     isbn = $(this).parents('tr').data('isbn');
+    book_id = $(this).parents('tr').attr('id');
   })
 
   btns = $('#container .upload').map(function(){
@@ -40,10 +42,12 @@ $(function(){
                  // 每个文件上传前,处理相关的事情
           },
           'UploadProgress': function(up, file) {
-                 // 每个文件上传时,处理相关的事情
+                 
           },
           'FileUploaded': function(up, file, info) {
-            
+              $.post("/books/"+book_id)
+              console.log(book_id);
+              debugger;
                  // 每个文件上传成功后,处理相关的事情
                  // 其中 info 是文件上传成功后，服务端返回的json，形式如
                  // {
