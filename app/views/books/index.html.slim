@@ -19,7 +19,8 @@ table.ui.table.striped
         td = link_to 'Edit', edit_book_path(book)
         td = link_to 'Destroy', book, data: { confirm: 'Are you sure?' }, method: :delete, remote: true
         td
-          a.upload id="pickfiles_#{index}" href="javascript: void(0);" 上传
+          - unless book.download
+            a.upload id="pickfiles_#{index}" href="javascript: void(0);" 上传
 
 br
 

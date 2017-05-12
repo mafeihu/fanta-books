@@ -45,9 +45,10 @@ $(function(){
                  
           },
           'FileUploaded': function(up, file, info) {
-              $.post("/books/"+book_id)
-              console.log(book_id);
-              debugger;
+              res = JSON.parse(info);
+              $.post("/books/"+book_id+".json", {_method: 'patch', book: {download: res.key }}, function(rsp){
+                $('tr#'+book_id+ ' .upload').slideUp();
+              })
                  // 每个文件上传成功后,处理相关的事情
                  // 其中 info 是文件上传成功后，服务端返回的json，形式如
                  // {

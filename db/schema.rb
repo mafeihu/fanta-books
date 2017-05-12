@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20170511113940) do
     t.string   "cover",                   comment: "封面"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "download"
     t.index ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
   end
 
