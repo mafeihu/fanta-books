@@ -9,16 +9,23 @@
 #  cover      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  download   :string
+#  deleted_at :datetime
 #
 # Indexes
 #
-#  index_books_on_isbn  (isbn) UNIQUE
+#  index_books_on_deleted_at  (deleted_at)
+#  index_books_on_isbn        (isbn)
 #
 
 class Book < ApplicationRecord
+  acts_as_paranoid
+
   validates :isbn, presence: true, length: {is: 13}
+  validates_uniqueness_of :isbn, scope: :deleted_at
 
   after_create_commit :douban
+  
 
   def cover
     read_attribute(:cover) || 'book_default.png'
@@ -40,5 +47,10 @@ class Book < ApplicationRecord
   private
     def douban
       BookJob.perform_later id
+    end
+
+    # unused
+    def qiniu_clean
+      Qiniu::Storage.delete(ENV['QINIU_BUCKET'], download)
     end
 end

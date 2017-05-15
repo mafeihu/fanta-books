@@ -12,11 +12,6 @@ html
     .ui.red.center.aligned.segment Read Easy Read More
     = yield
     = javascript_include_tag "//cdn.bootcss.com/semantic-ui/2.2.10/semantic.min.js"
-    = javascript_include_tag "//cdn.bootcss.com/echo.js/1.7.3/echo.min.js"
-    javascript:
-      $(function(){
-        echo.init({
-          offset: 100
-        });
-      })
+    = yield :js
+    
 

@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim-rails', '~> 3.1', '>= 3.1.2'
 gem 'typhoeus', '~> 1.1', '>= 1.1.2'
 gem 'sidekiq', '~> 4.2', '>= 4.2.10'
+gem 'qiniu', '~> 6.8', '>= 6.8.1'
+gem 'paranoia', '~> 2.3', '>= 2.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
