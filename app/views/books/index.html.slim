@@ -1,7 +1,16 @@
+.ui.segment
+  - @tags.each do |tag|
+    .ui.label
+      = tag.taggings_count
+      = link_to tag.name, books_path(tag: tag.name), class: 'detail'
+
+
+
+= link_to '添加书籍', new_book_path, class: 'ui button positive', remote: true
+
 .ui.modal
   i.close.icon
-  
-  .content 测试内容
+  .content
 
 
 table.ui.table.striped
@@ -13,24 +22,11 @@ table.ui.table.striped
       th
       th
       th
-      th
+
 
   tbody#container
-    - @books.each_with_index do |book,index|
-      tr id="#{book.id}" data-isbn="#{book.isbn}"
-        td = book.title
-        td = book.isbn
-        td = book_category(book)
-        td = link_to 'Show', book
-        td = link_to 'Edit', edit_book_path(book), remote: true
-        td = link_to 'Destroy', book, data: { confirm: 'Are you sure?' }, method: :delete, remote: true
-        td
-          - unless book.download
-            a.upload id="pickfiles_#{index}" href="javascript: void(0);" 上传
-
-br
-
-= link_to 'New Book', new_book_path
+    = render @books
+    
 
 
 - content_for :js
