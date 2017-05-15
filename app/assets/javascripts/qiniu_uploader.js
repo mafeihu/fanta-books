@@ -17,7 +17,7 @@ $(function(){
       browse_button: btns,         // 上传选择的点选按钮，**必需**
       uptoken_url: '/api/qiniu',         // Ajax 请求 uptoken 的 Url，**强烈建议设置**（服务端提供）
      
-      get_new_uptoken: false,             // 设置上传文件的时候是否每次都重新获取新的 uptoken
+      get_new_uptoken: true,             // 设置上传文件的时候是否每次都重新获取新的 uptoken
       // downtoken_url: '/downtoken',
       // Ajax请求downToken的Url，私有空间时使用,JS-SDK 将向该地址POST文件的key和domain,服务端返回的JSON必须包含`url`字段，`url`值为该文件的下载地址
       unique_names: false,              // 默认 false，key 为文件名。若开启该选项，JS-SDK 会为每个文件自动生成key（文件名）
@@ -42,6 +42,9 @@ $(function(){
                  // 每个文件上传前,处理相关的事情
           },
           'UploadProgress': function(up, file) {
+            // debugger;
+            $('tr#'+book_id+ ' .upload').html(up.total.percent)
+            // console.log(up.total.percent);
                  
           },
           'FileUploaded': function(up, file, info) {
@@ -62,7 +65,7 @@ $(function(){
                  // var sourceLink = domain + res.key; 获取上传成功后的文件的Url
           },
           'Error': function(up, err, errTip) {
-                 //上传出错时,处理相关的事情
+                 alert(errTip);
                  
           },
           'UploadComplete': function() {
