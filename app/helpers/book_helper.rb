@@ -5,4 +5,8 @@ module BookHelper
     }.join("\n").html_safe
     
   end
+
+  def book_title(book)
+    link_to book.title, "https://book.douban.com/subject/#{book.external}/", target: '_blank' if book.external.present?
+  end
 end

@@ -43,7 +43,7 @@ $(function(){
           },
           'UploadProgress': function(up, file) {
             // debugger;
-            $('tr#'+book_id+ ' .upload').html(up.total.percent)
+            $('tr#'+book_id+ ' .upload').html(up.total.percent + "%")
             // console.log(up.total.percent);
                  
           },

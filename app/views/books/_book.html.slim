@@ -1,5 +1,5 @@
 tr id="#{book.id}" data-isbn="#{book.isbn}"
-  td = book.title
+  td = book_title(book)
   td = book.isbn
   td = book_category(book)
   td = link_to 'Edit', edit_book_path(book), remote: true
