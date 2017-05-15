@@ -3,7 +3,11 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :books
+  
+  scope :admin do
+    resources :books
+  end
+
   namespace :api do
     get 'qiniu' => 'qiniu#index'
   end
