@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515052109) do
+ActiveRecord::Schema.define(version: 20170515054132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170515052109) do
     t.string   "download"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_books_on_deleted_at", using: :btree
-    t.index ["isbn"], name: "index_books_on_isbn", unique: true, using: :btree
+    t.index ["isbn"], name: "index_books_on_isbn", using: :btree
   end
 
 end

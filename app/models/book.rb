@@ -15,13 +15,14 @@
 # Indexes
 #
 #  index_books_on_deleted_at  (deleted_at)
-#  index_books_on_isbn        (isbn) UNIQUE
+#  index_books_on_isbn        (isbn)
 #
 
 class Book < ApplicationRecord
   acts_as_paranoid
 
   validates :isbn, presence: true, length: {is: 13}
+  validates_uniqueness_of :isbn, scope: :deleted_at
 
   after_create_commit :douban
   
