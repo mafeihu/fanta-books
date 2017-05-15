@@ -1,14 +1,11 @@
 class Api::QiniuController < ActionController::API
 
+  # https://developer.qiniu.com/kodo/manual/1206/put-policy
   def index
-    put_policy = Qiniu::Auth::PutPolicy.new(
-        ENV['QINIU_BUCKET'],           # 存储空间
-        nil,                           # 最终资源名，可省略，即缺省为“创建”语义
-        1800,                          # 相对有效期，可省略，缺省为3600秒后 uptoken 过期
-        (Time.now + 30.minutes).to_i   # 绝对有效期，可省略，指明 uptoken 过期期限（绝对值），通常用于调试，这里表示半小时
-      )
-      uptoken = Qiniu::Auth.generate_uptoken(put_policy)
-      render json: {uptoken: uptoken}, status: 200
+    put_policy = Qiniu::Auth::PutPolicy.new(ENV['QINIU_BUCKET'])
+    uptoken = Qiniu::Auth.generate_uptoken(put_policy)
+    expires_now
+    render json: {uptoken: uptoken}
   end
   
 end
