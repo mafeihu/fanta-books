@@ -1,12 +1,16 @@
-= form_for @book, html:{class: 'ui form'}, remote: true do |f|
+= form_for @book, html:{class: 'ui form'} do |f|
   - if @book.errors.any?
     #error_explanation
       h2 = "#{pluralize(@book.errors.count, "error")} prohibited this book from being saved:"
       ul
         - @book.errors.full_messages.each do |message|
           li = message
-
-  .field
-    = f.label :isbn
-    = f.text_field :isbn
+  - if @book.new_record?
+    .field
+      = f.label :isbn
+      = f.text_field :isbn
+  - else
+    .field
+      = f.label :tag
+      = f.text_field :tag_list
   .actions = f.submit class: 'ui button positive'

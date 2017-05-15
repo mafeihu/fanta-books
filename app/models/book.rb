@@ -20,6 +20,7 @@
 
 class Book < ApplicationRecord
   acts_as_paranoid
+  acts_as_taggable
 
   validates :isbn, presence: true, length: {is: 13}
   validates_uniqueness_of :isbn, scope: :deleted_at

@@ -1,3 +1,7 @@
+.ui.modal
+  i.close.icon
+  
+  .content 测试内容
 
 
 table.ui.table.striped
@@ -5,6 +9,7 @@ table.ui.table.striped
     tr 
       th 标题
       th ISBN
+      th 标签
       th
       th
       th
@@ -15,8 +20,9 @@ table.ui.table.striped
       tr id="#{book.id}" data-isbn="#{book.isbn}"
         td = book.title
         td = book.isbn
+        td = book_category(book)
         td = link_to 'Show', book
-        td = link_to 'Edit', edit_book_path(book)
+        td = link_to 'Edit', edit_book_path(book), remote: true
         td = link_to 'Destroy', book, data: { confirm: 'Are you sure?' }, method: :delete, remote: true
         td
           - unless book.download
@@ -28,7 +34,6 @@ br
 
 
 - content_for :js
-
   = javascript_include_tag '//cdn.bootcss.com/qiniu-js/1.0.17.1/qiniu.min.js'
   = javascript_include_tag '//cdn.bootcss.com/plupload/2.1.9/plupload.full.min.js'
   = javascript_include_tag 'qiniu_uploader'
