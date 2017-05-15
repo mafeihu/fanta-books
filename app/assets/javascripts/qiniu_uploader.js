@@ -49,7 +49,7 @@ $(function(){
           },
           'FileUploaded': function(up, file, info) {
               res = JSON.parse(info);
-              $.post("/books/"+book_id+".json", {_method: 'patch', book: {download: res.key }}, function(rsp){
+              $.post("/admin/books/"+book_id+".json", {_method: 'patch', book: {download: res.key }}, function(rsp){
                 $('tr#'+book_id+ ' .upload').slideUp();
               })
                  // 每个文件上传成功后,处理相关的事情
