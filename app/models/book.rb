@@ -20,6 +20,7 @@ class Book < ApplicationRecord
   validates :isbn, presence: true, length: {is: 13}
 
   after_create_commit :douban
+  before_destroy :qiniu_clean, if: 'download.present?'
 
   def cover
     read_attribute(:cover) || 'book_default.png'
@@ -41,5 +42,9 @@ class Book < ApplicationRecord
   private
     def douban
       BookJob.perform_later id
+    end
+
+    def qiniu_clean
+      Qiniu::Storage.delete(ENV['QINIU_BUCKET'], download)
     end
 end
